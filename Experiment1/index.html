@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</head>
+	<body ng-app="mainModule" ng-controller="mainController">
+		<header>
+			{{title}}
+		</header>
+		<div id="listItemsSection">
+			<br/>
+			
+			Data list Entry (Item Name): <input list="itemNames" ng-model="itemNameValue">
+			
+			<datalist id="itemNames">
+				<option ng-repeat="i in items" value="{{i.name}}">
+			</datalist>
+			<br/><br/>
+			<!--Item Name: <input type="text" name="itemName" ng-model="itemNameValue" />-->
+			<button ng-click="addItem()">Add item</button>
+			<br/>
+			<li ng-repeat="item in list">
+				<ul>
+					<input type="checkbox" ng-model="item.done">
+					<span>{{item.name}} - {{item.id}}</span>
+					<!-- to remove an item - use the $index variable given that you are in the ng-repeat mode for navigating through the array of objects -->
+					<a href="" ng-click="removeItem($index)">Remove</a>
+					||
+					<a href="" ng-click="editItem($index)">Edit</a>
+					||
+					<a href="" ng-click="updateItem($index)">Update</a>
+				</ul>
+			</li>
+
+		</div>
+	</body>
+</html>
